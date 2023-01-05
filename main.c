@@ -1079,7 +1079,178 @@ int select_products(){
     }
 
 }
+void irtisum()
+{
+     setColor(238);
+    for(int i=5;i<=9;i++)
+    {
+        gotoxy(i,3);
+        printf("*");fflush(stdout);
+        Sleep(10);
 
+    }
+   for(int i=4;i<=13;i++)
+   {
+       gotoxy(7,i);
+       printf("*");fflush(stdout);
+       Sleep(10);
+   }
+   for(int i=5;i<=9;i++)
+   {
+       gotoxy(i,14);
+       printf("*");fflush(stdout);
+       Sleep(10);
+   }
+   for(int i=3;i<=14;i++)
+   {
+       gotoxy(13,i);
+       printf("*");fflush(stdout);
+       Sleep(10);
+
+   }
+   for(int i=14;i<=14+5;i++)
+   {
+        gotoxy(i,3);
+       printf("*");fflush(stdout);
+       Sleep(10);
+   }
+   for(int i=4;i<=4+4;i++)
+   {
+        gotoxy(19,i);
+       printf("*");fflush(stdout);
+       Sleep(10);
+   }
+   int i;
+   for(i=14;i<=14+4;i++)
+   {
+        gotoxy(i,8);
+       printf("*");fflush(stdout);
+       Sleep(10);
+   }
+   for(i=1;i<=6;i++)
+   {
+       gotoxy(14+i,8+i);
+       printf("*");fflush(stdout);
+       Sleep(10);
+   }
+   for(i=22;i<=22+4;i++)
+   {
+        gotoxy(i,3);
+       printf("*");fflush(stdout);
+       Sleep(10);
+   }
+    for(int i=4;i<=14;i++)
+   {
+       gotoxy(24,i);
+       printf("*");fflush(stdout);
+       Sleep(10);
+   }
+   for(int i=31;i<=35;i++)
+   {
+       gotoxy(i,3);
+       printf("*");fflush(stdout);
+       Sleep(10);
+   }
+       for(i=4;i<=13;i++)
+   {
+        gotoxy(33,i);
+       printf("*");fflush(stdout);
+       Sleep(10);
+   }
+   for(i=31;i<=35;i++)
+   {
+        gotoxy(i,14);
+       printf("*");fflush(stdout);
+       Sleep(10);
+   }
+   for(int i=45;39<=i;i--)
+   {
+       gotoxy(i,3);
+       printf("*");fflush(stdout);
+       Sleep(10);
+   }
+   for(int i=4;i<=4+3;i++)
+   {
+        gotoxy(39,i);
+       printf("*");fflush(stdout);
+       Sleep(10);
+   }
+   for(int i=39;i<=45;i++)
+   {
+        gotoxy(i,8);
+       printf("*");fflush(stdout);
+       Sleep(10);
+   }
+   for(int i=9;i<=9+4;i++)
+   {
+        gotoxy(45,i);
+       printf("*");fflush(stdout);
+       Sleep(10);
+   }
+    for(int i=39;i<=45;i++)
+   {
+        gotoxy(i,14);
+       printf("*");fflush(stdout);
+       Sleep(10);
+   }
+   for(int i=3;i<=13;i++)
+   {
+        gotoxy(49,i);
+       printf("*");fflush(stdout);
+       Sleep(10);
+   }
+   for(int i=49;i<=57;i++)
+   {
+        gotoxy(i,14);
+       printf("*");fflush(stdout);
+       Sleep(10);
+   }
+    for(int i=13;i>=3;i--)
+    {
+        gotoxy(57,i);
+       printf("*");fflush(stdout);
+       Sleep(10);
+    }
+
+    for(int i=3;i<=14;i++)
+    {
+         gotoxy(61,i);
+       printf("*");fflush(stdout);
+       Sleep(10);
+    }
+    for(int i=1;i<=5;i++)
+    {
+        gotoxy(61+i,3+i);
+       printf("*");fflush(stdout);
+       Sleep(10);
+    }
+    for(int i=1;i<=4;i++)
+    {
+         gotoxy(65+i,8-i);
+       printf("*");fflush(stdout);
+       Sleep(10);
+    }
+    for(int i=3;i<=14;i++)
+    {
+        gotoxy(71,i);
+       printf("*");fflush(stdout);
+       Sleep(10);
+    }
+    setColor(235);
+    gotoxy(35,19);
+    printf("Group lederer : Mohammad Irtisum");
+
+    gotoxy(35,22);
+    printf("mohammadirtisumbd@gmail.com");
+
+    gotoxy(35,25);
+    printf("Group Member : Ahanaf");
+
+    setColor(268);
+    gotoxy(35,27);
+    printf("Press enter to Go back!!!");
+    getchar();
+}
 
 int login(int a)
 {
@@ -1529,12 +1700,8 @@ int main()
 
         else if(f==2){
             system("cls");
-            gotoxy(35,10);
-            printf("Irtisum and Ahanaf");
-            setColor(268);
-            gotoxy(35,15);
-            printf("Press enter to Go back!!!");
-            getchar();
+            irtisum();
+
 
         }
 
