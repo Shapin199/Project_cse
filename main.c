@@ -922,7 +922,7 @@ void purchase(int tp)
 
 //    show_all_product();
 
-    int pay,c;
+    int pay,c,d;
     if(tp!=0)
     {
         setColor(237);
@@ -942,58 +942,19 @@ void purchase(int tp)
         scanf("%d",&pay);
         if(pay==1)
         {
+
+            char s[100] = "THANKS FOR PURCHASING";
             system("cls");
-            gotoxy(65,c+3);
-            setColor(238);
+            for(int i =0,d=13;s[i];i++,d++)
+            {
+               gotoxy(d,8);
+               setColor(238);
+               printf("%c",s[i]);
+               Sleep(80);
+            }
 
-            printf("T");
-            Sleep(80);
-            printf("H");
-            Sleep(80);
-            printf("A");
-            Sleep(80);
-            printf("N");
-            Sleep(80);
-            printf("K");
-            Sleep(80);
-            printf("S");
-            Sleep(80);
-            printf(" ");
-            Sleep(80);
-            printf("F");
-            Sleep(80);
-            printf("O");
-            Sleep(80);
-            printf("R");
-            Sleep(80);
-            printf(" ");
-            Sleep(80);
-            printf("P");
-            Sleep(80);
-            printf("U");
-            Sleep(80);
-            printf("R");
-            Sleep(80);
-            printf("C");
-            Sleep(80);
-            printf("H");
-            Sleep(80);
-            printf("A");
-            Sleep(80);
-            printf("S");
-            Sleep(80);
-            printf("I");
-            Sleep(80);
-            printf("N");
-            Sleep(80);
-            printf("G");
-            Sleep(300);
-
-
-            //getchar();
-            //getchar();
             setColor(268);
-            gotoxy(65,c+8);
+            gotoxy(39,13);
             printf("Press enter to continue!!!");
 
             getchar();
