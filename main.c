@@ -885,31 +885,47 @@ int c_profile()
 }
 void total(int a[],int b[],int c[],int cont,int sum)
 {
-    show_all_product();
+    //show_all_product();
+    system("cls");
 
     int i, j,d;
     for(i=1,d = 8; i<=cont+3; i++,d+=2)
     {
         if(i==cont+1)
         {
-            gotoxy(65,d);
-            printf("-------------------");
+            gotoxy(31,d);
+            printf("-------------------------");
         }
         else if(i==cont+2)
         {
 
-            gotoxy(65,d);
-            printf("Total  = %d",sum);
+            gotoxy(37,d);
+            printf("Total");
+
+            gotoxy(45,d);
+            printf("=");
+            gotoxy(47,d);
+            printf("%d",sum);
+
         }
         else if(i == cont+3)
         {
-            gotoxy(65,d);
+            gotoxy(31,d);
             printf("Press enter to continue...");
         }
         else
         {
-            gotoxy(65,d);
-            printf("%d %s %d %d",i,p[a[i]].p_name,b[i],c[i]);
+            gotoxy(31,d);
+            printf("%d",i);
+
+            gotoxy(35,d);
+            printf("%s",p[a[i]].p_name);
+
+            gotoxy(43,d);
+            printf("%d",b[i]);
+
+            gotoxy(47,d);
+            printf("%d",c[i]);
         }
     }
 
