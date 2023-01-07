@@ -3,7 +3,7 @@
 #include<string.h>
 void setColor(int ForgC)
 {
-  //work nn**
+    //work nn**
 
     WORD wColor;
 
@@ -249,7 +249,7 @@ int s_uniqueID()
     ///show();
     for(i = 0; i < number_of_shoppers; i++)
         if(!strcmp(user_name, s[i].user_name))
-              return 1;
+            return 1;
     return 0;
 }
 
@@ -275,27 +275,29 @@ int shopper_user_check()
 }
 void show_all_product()
 {
-	int i,c;
+    int i,c;
 
-	read_products();
+    read_products();
 
-	system("cls");
+    system("cls");
 
-	for(i =1,c=11; i <=number_of_products; i++,c+=3) {
+    for(i =1,c=11; i <=number_of_products; i++,c+=3)
+    {
 
-             setColor(238);
-             gotoxy(15,c);
-             printf("%d %s %d %d\n",i,p[i].p_name,p[i].Quantity, p[i].price);
-             Sleep(100);
+        setColor(238);
+        gotoxy(15,c);
+        printf("%d %s %d %d\n",i,p[i].p_name,p[i].Quantity, p[i].price);
+        Sleep(100);
 
-	}
+    }
 
 }
 
 
 //LOGIN : ENTER IN THE PROFILE SCREEN of shopper
 
-int s_profile(){
+int s_profile()
+{
 
     setup();
 
@@ -308,7 +310,8 @@ int s_profile(){
     printf("%s!", s[s_avatar].shop_name);
 
     gotoxy(17, 19);
-    printf("%s", s[s_avatar].name);    setColor(238);
+    printf("%s", s[s_avatar].name);
+    setColor(238);
 
 
 
@@ -378,8 +381,8 @@ int s_profile(){
             setColor(238);
 
             gotoxy(65, 23);
-             printf(">  Log Out");
-             pos++;
+            printf(">  Log Out");
+            pos++;
         }
         else if(ch == 72 && pos == 3)
         {
@@ -388,9 +391,9 @@ int s_profile(){
             gotoxy(65, 20);
             printf(">  Delete  Product");
 
-           setColor(239);
-           gotoxy(65, 23);
-           printf("   Log Out");
+            setColor(239);
+            gotoxy(65, 23);
+            printf("   Log Out");
 
 
             pos--;
@@ -456,17 +459,18 @@ void read_products()
 
 void s_writeData()//product
 {
-	int i;
+    int i;
 
-	FILE *fp;
-	fp = fopen("products.txt", "w");
+    FILE *fp;
+    fp = fopen("products.txt", "w");
 
-	fprintf(fp, "%d\n", number_of_products);
+    fprintf(fp, "%d\n", number_of_products);
 
-	for(i = 1; i <=number_of_products; i++) {
-		fprintf(fp, "%s\n%d\n%d\n", p[i].p_name,p[i].Quantity, p[i].price);
-	}
-	fclose(fp);
+    for(i = 1; i <=number_of_products; i++)
+    {
+        fprintf(fp, "%s\n%d\n%d\n", p[i].p_name,p[i].Quantity, p[i].price);
+    }
+    fclose(fp);
 }
 
 
@@ -486,7 +490,8 @@ void add_products()
 
     scanf("%d",&m);
 
-    for(j=0,c=14;j<m;j++,c+=9){
+    for(j=0,c=14; j<m; j++,c+=9)
+    {
 
         gotoxy(65,c);
         printf("input prouduct name: ");
@@ -514,23 +519,26 @@ void add_products()
         s_writeData();
     }
     getchar();
-	getchar();
+    getchar();
 }
 
 //Find product name while updating pricing
 
-int findbyname(char name[]){
+int findbyname(char name[])
+{
 
     int pos = -1, i;
 
-	read_products();
+    read_products();
 
-	for(i = 1; i <= number_of_products; i++) {
-		if(strcmp(p[i].p_name, name) == 0) {
-			pos = i;
-		}
-	}
-	return pos;
+    for(i = 1; i <= number_of_products; i++)
+    {
+        if(strcmp(p[i].p_name, name) == 0)
+        {
+            pos = i;
+        }
+    }
+    return pos;
 
 }
 
@@ -550,7 +558,8 @@ void update_pricing()
     printf("How many products you want to update: ");
     scanf("%d",&m);
 
-    for(int j=1,c=14;j<=m;j++,c+=9){
+    for(int j=1,c=14; j<=m; j++,c+=9)
+    {
 
         gotoxy(65,c);
         printf("Enter Your Product Name: ");
@@ -566,78 +575,80 @@ void update_pricing()
 
         int pos = findbyname(name);
 
-        if(pos!= -1){
+        if(pos!= -1)
+        {
 
-           p[pos].Quantity += qn;
+            p[pos].Quantity += qn;
 
-           p[pos].price = price;
+            p[pos].price = price;
         }
         s_writeData();
     }
     getchar();
-	getchar();
+    getchar();
 
 }
 
 
 void ss_writeData()//shopper
 {
-   int i;
-	FILE *fp;
-	fp = fopen("shopper.txt", "w");
+    int i;
+    FILE *fp;
+    fp = fopen("shopper.txt", "w");
 
-	fprintf(fp, "%d\n", number_of_shoppers);
+    fprintf(fp, "%d\n", number_of_shoppers);
 
-	for(i = 0; i <number_of_shoppers; i++) {
-		fprintf(fp, "%s\n%s\n%s\n%s\n", s[i].shop_name,s[i].name,s[i].user_name,s[i].pass);
-	}
-	fclose(fp);
+    for(i = 0; i <number_of_shoppers; i++)
+    {
+        fprintf(fp, "%s\n%s\n%s\n%s\n", s[i].shop_name,s[i].name,s[i].user_name,s[i].pass);
+    }
+    fclose(fp);
 }
 // Delete Product from the price
 
 void delete_product()
 {
-   	char name[100];
-   	int price,i,m,j,c;
+    char name[100];
+    int price,i,m,j,c;
 
-   	system("cls");
+    system("cls");
 
-   	show_all_product();
+    show_all_product();
 
     gotoxy(65,11);
     printf("How many products you want to delete:");
-   	scanf("%d",&m);
+    scanf("%d",&m);
 
-   	for(j=1,c=14;j<=m;j++,c+=3)
+    for(j=1,c=14; j<=m; j++,c+=3)
     {
         setColor(238);
         gotoxy(65,c);
         printf("Enter your product name:");
-     	scanf(" %[^\n]", name);
+        scanf(" %[^\n]", name);
 
-      int pos= findbyname(name);
+        int pos= findbyname(name);
 
-      if(pos != -1)
-      {
-        number_of_products--;
-        for(i = pos; i <=number_of_products; i++)
+        if(pos != -1)
         {
-            p[i]=p[i+1];
+            number_of_products--;
+            for(i = pos; i <=number_of_products; i++)
+            {
+                p[i]=p[i+1];
+            }
         }
-      }
 
-     else
-     {
-         setColor(219);
-         gotoxy(65,8);
-         printf("%s not found\n",name);
-     }
+        else
+        {
+            setColor(219);
+            gotoxy(65,8);
+            printf("%s not found\n",name);
+        }
     }
 
     s_writeData();//Delete Product
 
     getchar();
-	getchar();
+    getchar();
 }
 
 //saving shopper after signup
@@ -704,7 +715,7 @@ int c_uniqueID()
     ///show();
     for(i = 0; i < number_of_customers; i++)
         if(!strcmp(user_name, c[i].user_name))
-               return 1;
+            return 1;
     return 0;
 }
 
@@ -736,15 +747,16 @@ int customer_user_check()
 void cc_writeData()
 {
     int i;
-	FILE *fp;
-	fp = fopen("customer.txt", "w");
+    FILE *fp;
+    fp = fopen("customer.txt", "w");
 
-	fprintf(fp, "%d\n", number_of_customers);
+    fprintf(fp, "%d\n", number_of_customers);
 
-	for(i = 0; i <number_of_customers; i++) {
-		fprintf(fp, "%s\n%s\n%s\n", c[i].name,c[i].user_name,c[i].pass);
-	}
-	fclose(fp);
+    for(i = 0; i <number_of_customers; i++)
+    {
+        fprintf(fp, "%s\n%s\n%s\n", c[i].name,c[i].user_name,c[i].pass);
+    }
+    fclose(fp);
 }
 
 ///saving shopper after signup
@@ -769,7 +781,8 @@ void  cc_saveInfo()
 
 //LOGIN : ENTER IN THE PROFILE SCREEN of the Customer
 
-int c_profile(){
+int c_profile()
+{
     setup();
 
     setColor(251);
@@ -874,24 +887,29 @@ void total(int a[],int b[],int c[],int cont,int sum)
 {
     show_all_product();
 
-     int i , j,d;
-    for(i=1,d = 8;i<=cont+2;i++,d+=2)
+    int i, j,d;
+    for(i=1,d = 8; i<=cont+3; i++,d+=2)
     {
         if(i==cont+1)
         {
-           gotoxy(65,d);
-           printf("---------------------");
+            gotoxy(65,d);
+            printf("-------------------");
         }
         else if(i==cont+2)
         {
 
             gotoxy(65,d);
-           printf("Total  = %d",sum);
+            printf("Total  = %d",sum);
+        }
+        else if(i == cont+3)
+        {
+            gotoxy(65,d);
+            printf("Press enter to continue...");
         }
         else
         {
-             gotoxy(65,d);
-           printf("%d %s %d %d",i,p[a[i]].p_name,b[i],c[i]);
+            gotoxy(65,d);
+            printf("%d %s %d %d",i,p[a[i]].p_name,b[i],c[i]);
         }
     }
 
@@ -904,8 +922,9 @@ void purchase(int tp)
 
 //    show_all_product();
 
-    int pay ,c;
-    if(tp!=0){
+    int pay,c;
+    if(tp!=0)
+    {
         setColor(237);
         gotoxy(65,11);
         printf("Select your choice\n");
@@ -921,7 +940,8 @@ void purchase(int tp)
 
         gotoxy(85,20);
         scanf("%d",&pay);
-        if(pay==1){
+        if(pay==1)
+        {
             system("cls");
             gotoxy(65,c+3);
             setColor(238);
@@ -980,7 +1000,8 @@ void purchase(int tp)
             getchar();
 
         }
-        else if(pay==2){
+        else if(pay==2)
+        {
             system("cls");
             setColor(268);
             gotoxy(55,c+8);
@@ -992,7 +1013,8 @@ void purchase(int tp)
     }
 }
 
-int search_products(){
+int search_products()
+{
     //int i,m,j,pr,c,qn;
     //char na[100];
 
@@ -1005,7 +1027,8 @@ int search_products(){
     getchar();
 }
 
-int select_products(){
+int select_products()
+{
 
     int cont=0,a[300],b[300],c[100];
 
@@ -1017,33 +1040,33 @@ int select_products(){
     {
         s=0;
         system("cls");
-       show_all_product();
+        show_all_product();
 
-       gotoxy(65,11);
-       printf("%d products select ",cont);
+        gotoxy(65,11);
+        printf("%d products select ",cont);
 
-       gotoxy(65,14);
-       printf("If you want to buy product press 1 otherwise press 0 :");
+        gotoxy(65,14);
+        printf("If you want to buy product press 1 otherwise press 0 :");
 
-       gotoxy(131,14);
-       scanf("%d",&n);
+        gotoxy(131,14);
+        scanf("%d",&n);
 
-       if(n>0)
-       {
-           gotoxy(65,17);
-           printf("Select product id:");
+        if(n>0)
+        {
+            gotoxy(65,17);
+            printf("Select product id:");
 
-           gotoxy(83,17);
-           scanf("%d",&a[i]);
+            gotoxy(83,17);
+            scanf("%d",&a[i]);
 
-           gotoxy(65,20);
-           printf("Quantity:");
+            gotoxy(65,20);
+            printf("Quantity:");
 
-           gotoxy(75,20);
-           scanf("%d",&b[i]);
+            gotoxy(75,20);
+            scanf("%d",&b[i]);
 
-           if(p[a[i]].Quantity >= b[i])
-           {
+            if(p[a[i]].Quantity >= b[i])
+            {
                 c[i] = p[a[i]].price*b[i];
 
                 sum+=p[a[i]].price*b[i];
@@ -1053,188 +1076,213 @@ int select_products(){
                 s_writeData();
 
                 cont++;
-           }
+                 i++;
+            }
 
-          else
-           {
-               gotoxy(65,23);
-               printf("%s This product available %d",p[a[i]].p_name,p[a[i]].Quantity);
-               getchar();
-               getchar();
-           }
+            else
+            {
+                gotoxy(65,23);
+                printf("%s This product available %d",p[a[i]].p_name,p[a[i]].Quantity);
+                getchar();
+                getchar();
+            }
 
 
 
-       }
-       else
-       {
+        }
+        else
+        {
 
             total(a,b,c,cont,sum);
 
             purchase(sum);
             break;
-       }
+        }
 
-        i++;
     }
 
 }
 void irtisum()
 {
-     setColor(238);
-    for(int i=5;i<=9;i++)
+    setColor(238);
+    for(int i=5; i<=9; i++)
     {
         gotoxy(i,3);
-        printf("*");fflush(stdout);
+        printf("*");
+        fflush(stdout);
         Sleep(10);
 
     }
-   for(int i=4;i<=13;i++)
-   {
-       gotoxy(7,i);
-       printf("*");fflush(stdout);
-       Sleep(10);
-   }
-   for(int i=5;i<=9;i++)
-   {
-       gotoxy(i,14);
-       printf("*");fflush(stdout);
-       Sleep(10);
-   }
-   for(int i=3;i<=14;i++)
-   {
-       gotoxy(13,i);
-       printf("*");fflush(stdout);
-       Sleep(10);
+    for(int i=4; i<=13; i++)
+    {
+        gotoxy(7,i);
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
+    }
+    for(int i=5; i<=9; i++)
+    {
+        gotoxy(i,14);
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
+    }
+    for(int i=3; i<=14; i++)
+    {
+        gotoxy(13,i);
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
 
-   }
-   for(int i=14;i<=14+5;i++)
-   {
+    }
+    for(int i=14; i<=14+5; i++)
+    {
         gotoxy(i,3);
-       printf("*");fflush(stdout);
-       Sleep(10);
-   }
-   for(int i=4;i<=4+4;i++)
-   {
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
+    }
+    for(int i=4; i<=4+4; i++)
+    {
         gotoxy(19,i);
-       printf("*");fflush(stdout);
-       Sleep(10);
-   }
-   int i;
-   for(i=14;i<=14+4;i++)
-   {
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
+    }
+    int i;
+    for(i=14; i<=14+4; i++)
+    {
         gotoxy(i,8);
-       printf("*");fflush(stdout);
-       Sleep(10);
-   }
-   for(i=1;i<=6;i++)
-   {
-       gotoxy(14+i,8+i);
-       printf("*");fflush(stdout);
-       Sleep(10);
-   }
-   for(i=22;i<=22+4;i++)
-   {
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
+    }
+    for(i=1; i<=6; i++)
+    {
+        gotoxy(14+i,8+i);
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
+    }
+    for(i=22; i<=22+4; i++)
+    {
         gotoxy(i,3);
-       printf("*");fflush(stdout);
-       Sleep(10);
-   }
-    for(int i=4;i<=14;i++)
-   {
-       gotoxy(24,i);
-       printf("*");fflush(stdout);
-       Sleep(10);
-   }
-   for(int i=31;i<=35;i++)
-   {
-       gotoxy(i,3);
-       printf("*");fflush(stdout);
-       Sleep(10);
-   }
-       for(i=4;i<=13;i++)
-   {
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
+    }
+    for(int i=4; i<=14; i++)
+    {
+        gotoxy(24,i);
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
+    }
+    for(int i=31; i<=35; i++)
+    {
+        gotoxy(i,3);
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
+    }
+    for(i=4; i<=13; i++)
+    {
         gotoxy(33,i);
-       printf("*");fflush(stdout);
-       Sleep(10);
-   }
-   for(i=31;i<=35;i++)
-   {
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
+    }
+    for(i=31; i<=35; i++)
+    {
         gotoxy(i,14);
-       printf("*");fflush(stdout);
-       Sleep(10);
-   }
-   for(int i=45;39<=i;i--)
-   {
-       gotoxy(i,3);
-       printf("*");fflush(stdout);
-       Sleep(10);
-   }
-   for(int i=4;i<=4+3;i++)
-   {
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
+    }
+    for(int i=45; 39<=i; i--)
+    {
+        gotoxy(i,3);
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
+    }
+    for(int i=4; i<=4+3; i++)
+    {
         gotoxy(39,i);
-       printf("*");fflush(stdout);
-       Sleep(10);
-   }
-   for(int i=39;i<=45;i++)
-   {
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
+    }
+    for(int i=39; i<=45; i++)
+    {
         gotoxy(i,8);
-       printf("*");fflush(stdout);
-       Sleep(10);
-   }
-   for(int i=9;i<=9+4;i++)
-   {
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
+    }
+    for(int i=9; i<=9+4; i++)
+    {
         gotoxy(45,i);
-       printf("*");fflush(stdout);
-       Sleep(10);
-   }
-    for(int i=39;i<=45;i++)
-   {
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
+    }
+    for(int i=39; i<=45; i++)
+    {
         gotoxy(i,14);
-       printf("*");fflush(stdout);
-       Sleep(10);
-   }
-   for(int i=3;i<=13;i++)
-   {
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
+    }
+    for(int i=3; i<=13; i++)
+    {
         gotoxy(49,i);
-       printf("*");fflush(stdout);
-       Sleep(10);
-   }
-   for(int i=49;i<=57;i++)
-   {
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
+    }
+    for(int i=49; i<=57; i++)
+    {
         gotoxy(i,14);
-       printf("*");fflush(stdout);
-       Sleep(10);
-   }
-    for(int i=13;i>=3;i--)
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
+    }
+    for(int i=13; i>=3; i--)
     {
         gotoxy(57,i);
-       printf("*");fflush(stdout);
-       Sleep(10);
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
     }
 
-    for(int i=3;i<=14;i++)
+    for(int i=3; i<=14; i++)
     {
-         gotoxy(61,i);
-       printf("*");fflush(stdout);
-       Sleep(10);
+        gotoxy(61,i);
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
     }
-    for(int i=1;i<=5;i++)
+    for(int i=1; i<=5; i++)
     {
         gotoxy(61+i,3+i);
-       printf("*");fflush(stdout);
-       Sleep(10);
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
     }
-    for(int i=1;i<=4;i++)
+    for(int i=1; i<=4; i++)
     {
-         gotoxy(65+i,8-i);
-       printf("*");fflush(stdout);
-       Sleep(10);
+        gotoxy(65+i,8-i);
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
     }
-    for(int i=3;i<=14;i++)
+    for(int i=3; i<=14; i++)
     {
         gotoxy(71,i);
-       printf("*");fflush(stdout);
-       Sleep(10);
+        printf("*");
+        fflush(stdout);
+        Sleep(10);
     }
     setColor(235);
     gotoxy(35,19);
@@ -1605,15 +1653,15 @@ int main()
 
                     if(f2==0)
                     {
-                         add_products();
+                        add_products();
                     }
                     else if(f2==1)
                     {
-                         update_pricing();
+                        update_pricing();
                     }
                     else if(f2==2)
                     {
-                         delete_product();
+                        delete_product();
                     }
                     else if(f2==3) break;
                 }
@@ -1628,15 +1676,15 @@ int main()
 
                     if(f4==0)
                     {
-                         search_products();
+                        search_products();
                     }
                     else if(f4==1)
                     {
-                         select_products();
+                        select_products();
                     }
                     else if(f4==2)
                     {
-                         break;
+                        break;
                     }
 
                 }
@@ -1658,7 +1706,7 @@ int main()
                     f3=s_profile();
                     if(f3==0)
                     {
-                         add_products();
+                        add_products();
                     }
                     else if(f3==1)
                     {
@@ -1666,7 +1714,7 @@ int main()
                     }
                     else if(f3==2)
                     {
-                         delete_product();
+                        delete_product();
                     }
                     else if(f3==3) break;
                 }
@@ -1687,7 +1735,7 @@ int main()
                     }
                     else if(f5==1)
                     {
-                         select_products();
+                        select_products();
                     }
                     else if(f5==2) break;
 
@@ -1697,8 +1745,8 @@ int main()
         }
 
 
-
-        else if(f==2){
+        else if(f==2)
+        {
             system("cls");
             irtisum();
 
